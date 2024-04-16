@@ -34,8 +34,8 @@ Secret<SecretData> kv2Secret = await vaultClient.V1.Secrets.KeyValue.V2
 var jwtSecret = kv2Secret.Data.Data["secret"];
 var jwtIssuer = kv2Secret.Data.Data["issuer"];
 
-string mySecret = (string)jwtSecret ?? "none";
-string myIssuer = (string)jwtIssuer ?? "none";
+string mySecret = Convert.ToString(jwtSecret) ?? "none";
+string myIssuer = Convert.ToString(jwtIssuer) ?? "none";
 builder.Services
 .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 .AddJwtBearer(options =>
